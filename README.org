@@ -1,0 +1,36 @@
+#+title: Setup-General
+* What Does it Do?
+Setup-General provides adapted versions of setup's macros to work with general
+
+* Requirements
+The emacs packages [[https://git.sr.ht/~pkal/setup][setup]] & [[https://github.com/noctuid/general.el][general.el]]
+
+* Usage
+** Keybinding Macros
+The keybinding macros only work with evil mode. If you aren't trying to bind keys for evil-mode, use the default =:bind=
+=:with-state= is used like =:with-map=, but for evil states.
+=:general= is this package's equivalent of =:bind=.
+
+*Examples:*
+#+begin_src emacs-lisp
+  (:with-state 'normal
+    (:with-map global-map
+      (:general "k" 'evil-previous-visual-line
+  	      "j" 'evil-next-visual-line)))
+#+end_src
+
+** Hook Macros
+=:ghook= is like =:hook=, but with general-add-hook.
+=:ghook-into= is like =:hook-into=, but with general-add-hook.
+Both have the ability to use lists.
+
+*Examples:*
+#+begin_src emacs-lisp
+  (:with-mode marginalia-mode
+    (:ghook all-the-icons-completion-maraginalia-setup))
+
+  (:ghook-into prog-mode))
+#+end_src
+
+* Credits
+Every macro here is adapted from the macros found in setup. Very little has been changed.
